@@ -1,0 +1,29 @@
+{
+  "name": "coinwatch",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.18.0",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-grid-layout": "^0.16.6",
+    "react-redux": "^5.0.7",
+    "react-redux-grid": "^5.5.2",
+    "react-router": "^4.2.0",
+    "react-scripts": "1.1.4",
+    "react-sparklines": "^1.7.0",
+    "redux": "^3.7.2",
+    "redux-promise-middleware": "^5.0.0",
+    "sematable": "^1.9.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-plugin-react": "^7.7.0"
+  }
+}
