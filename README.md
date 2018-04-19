@@ -20,3 +20,31 @@
  - 기본 구현 사항 외에 추가 구현 내용에 따라 추가 20점 부여 - 추가 내용은 보고서 및 발표에서 잘 제시하세요.
 
 > 참고: https://github.com/brillout/awesome-react-components
+
+
+
+
+
+##### 18-04-20
+
+- 이름 card-title 넣기
+- input-button 정리 & 중앙정렬
+- PRICE 3자리 , 구분
+
+> ##### error  "_" is not defined  no-undef
+>
+> .eslintrc.json  아래와 같이. 그리고 파일 상단에 /* global _ */
+
+```json
+{
+    "globals": {
+        "_": false
+    }
+}
+```
+
+
+
+해야할 것
+
+- 자꾸 전체 다 다시 리로드됨.. 가격만 바뀔때로

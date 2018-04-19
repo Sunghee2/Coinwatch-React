@@ -11,10 +11,16 @@ body {
     margin-bottom: 6%;
 }
 
-p {
+p.header {
     font-family: 'Gugi', cursive;
     font-size: 4em;
 }
+
+/* search_bar */
+/* form.searchBar {
+  margin-left: 30%;
+  margin-right: 30%;
+} */
 
 /* test */
 div#myGrid {
@@ -26,8 +32,8 @@ div#myGrid {
     transition: height 200ms ease;
   }
   .react-grid-item {
-    transition: all 200ms ease;
-    transition-property: left, top;
+    /* transition: all 200ms ease; */
+    /* transition-property: left, top; */
   }
   .react-grid-item.cssTransforms {
     transition-property: transform;

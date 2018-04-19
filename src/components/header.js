@@ -2,7 +2,7 @@ import React from 'react';
 
 const Header = () => {
   return (
-    <p>Coin Watch</p>
+    <p className="header">Coin Watch</p>
   );
 };
 

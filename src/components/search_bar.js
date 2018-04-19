@@ -17,9 +17,9 @@ class SearchBar extends Component {
 
   render() {
     return (
-      <form className="row">
+      <form className="searchBar row form-inline justify-content-md-center">
         <input
-          className="col-11 form-control"
+          className="form-control"
           type="text"
           placeholder="Coin"
           value={this.state.term}

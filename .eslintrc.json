@@ -31,5 +31,8 @@
             "error",
             "always"
         ]
+    },
+    "globals": {
+        "_": false
     }
 }
