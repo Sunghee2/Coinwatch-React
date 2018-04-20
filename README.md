@@ -30,6 +30,7 @@
 - 이름 card-title 넣기
 - input-button 정리 & 중앙정렬
 - PRICE 3자리 , 구분
+- change24Hprice
 
 > ##### error  "_" is not defined  no-undef
 >

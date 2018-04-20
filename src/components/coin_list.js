@@ -55,11 +55,13 @@ class CoinList extends Component {
     var num = 0;
     for (var i in coins) {
       var layout = this.generateLayout(num);
+      var change24H = ((coins[i].KRW.PRICE - coins[i].KRW.OPEN24HOUR)/coins[i].KRW.OPEN24HOUR * 100).toFixed(2) + "%";
       rows.push(
         <div className="card" key={i} data-grid={layout}>
           <div className="card-body">
             <p className="coin-name">{i}</p>
             <p className="coin-price" key={coins[i].KRW.PRICE}>₩ {this.numberWithCommas(coins[i].KRW.PRICE)}</p>
+            <p className="change24H">{change24H}</p>
           </div>
         </div>
       );

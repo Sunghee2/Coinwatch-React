@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-// import {connect} from 'react-redux';
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import {selectCoin} from '../actions';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -15,9 +17,17 @@ class SearchBar extends Component {
     });
   }
 
+  onSubmit(event) {
+    event.preventDefault();
+    this.props.selectCoin(this.state.term);
+    this.setState({term:''});
+  }
+
   render() {
     return (
-      <form className="searchBar row form-inline justify-content-md-center">
+      <form 
+        className="searchBar row form-inline justify-content-md-center"
+        onSubmit={event => this.onSubmit(event)}>
         <input
           className="form-control"
           type="text"
@@ -32,4 +42,12 @@ class SearchBar extends Component {
   }
 }
 
-export default SearchBar;
+function mapStateToProps(state) {
+
+}
+
+function mapDispathToProps(dispatch) {
+  return bindActionCreators({selectCoin}, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispathToProps)(SearchBar);
