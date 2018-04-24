@@ -1,4 +1,3 @@
-/* global _ */
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import RGL, { WidthProvider } from 'react-grid-layout';
@@ -18,39 +17,11 @@ class CoinList extends Component {
     }, 2000);
   }
 
-  // renderCard(num, coin) {
-  //   console.log(coin.FROMSYMBOL);
-  //   return <div key="0" data-grid={{x: 0, y: 0, w: 1, h: 2}}>asdf</div>;
-  // <div key="b" data-grid={{x: 1, y: 0, w: 3, h: 2, minW: 2, maxW: 4}}>{this.props.coins[1].name}</div>
-  // <div key="c" data-grid={{x: 4, y: 0, w: 1, h: 2}}>c</div>
-
-  // var order = coins`.${coin}.KRW.MARKET`;
-  // console.log(order);
-  // for(var i in coins) {
-  //   console.log(i);
-  //   console.log(coins[i].KRW)
-  // }
-  // console.log(coin.length);
-  // return <div>{order}</div>;
-  // return (
-  //   <div className="card" key={coins.coin.KRW.MARKET}>
-  //   <
-  // )
-  // }
-
   numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
   renderCoin(coins) {
-    // var num = 0;
-    // for(var i in coins) {
-    //   this.renderCard(num, coins[i].KRW);
-    //   // console.log(i);
-    //   // return <div key="sdaf">asdfadsi</div>;
-    //   // this.renderCard(num, coins[i].KRW);
-    //   // num++;
-    // }
     var rows=[];
     var num = 0;
     for (var i in coins) {
@@ -68,16 +39,6 @@ class CoinList extends Component {
       num++;
     }
     return rows;
-    // return coins.map(coin => (
-    //   <div className="card" key={coin.KRW.FROMSYMBOL}>
-    //     <div className="card-body">
-    //       <p className="card-title">{coin.KRW.FROMSYMBOL}</p>
-    //       {/* <Sparklines height={50} width={80} data={}>
-    //         <SparklinesLine color={}/>
-    //       </Sparklines> */}
-    //     </div>
-    //   </div>
-    // ));
   }
 
 
@@ -99,14 +60,7 @@ class CoinList extends Component {
     }
     return (
       <ReactGridLayout>
-        {/* for(var i = 0; i < ; i++) {
-           <div>adsf</div>
-        } */}
-        {/* <div key="a">{a}</div>
-        <div key="b">{b}</div>
-        <div key="c">c</div> */}
         {this.renderCoin(this.props.coins)}
-        {/* {this.renderCoin(this.props.coins)} */}
       </ReactGridLayout>
     );
   }

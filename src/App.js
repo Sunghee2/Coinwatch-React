@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-// import SearchBar from './components/search_bar';
 import SearchBar from './components/search_bar';
 import CoinList from './components/coin_list';
 import Header from './components/header';
