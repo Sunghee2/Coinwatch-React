@@ -1,6 +1,8 @@
 /* All */
 body {
-    background-color: #A0D1F7;
+    /* background-color: #A0D1F7; */
+    background-image: url('./img/sky.jpg');
+    background-size: cover;
     vertical-align: middle !important;
     text-align: center !important;
 }
@@ -14,6 +16,7 @@ body {
 p.header {
     font-family: 'Gugi', cursive;
     font-size: 4em;
+    color: whitesmoke;
 }
 
 /* search_bar */
@@ -21,6 +24,20 @@ p.header {
   margin-left: 30%;
   margin-right: 30%;
 } */
+
+/* coin_list */
+.card { 
+  background-color: rgba(245, 245, 245, 0.8); 
+}
+
+.card-header, .card-footer {
+   opacity: 1
+}
+
+.coin_list_img {
+  width: 2em;
+  height: 2em;
+}
 
 /* test */
 div#myGrid {

@@ -27,10 +27,10 @@
 
 ##### 18-04-20
 
-- 이름 card-title 넣기
-- input-button 정리 & 중앙정렬
-- PRICE 3자리 , 구분
-- change24Hprice
+- [x] 이름 card-title 넣기
+- [x] input-button 정리 & 중앙정렬
+- [x] PRICE 3자리 , 구분
+- [x] change24Hprice
 
 > ##### error  "_" is not defined  no-undef
 >
@@ -49,3 +49,43 @@
 해야할 것
 
 - 자꾸 전체 다 다시 리로드됨.. 가격만 바뀔때로
+
+
+
+##### 18-04-24
+
+- [x] card 투명하게
+
+- [x] TradingView chart 넣기(api) -> 
+
+- [x] coin 설명하는 tab 넣기
+
+- [x] containers 나누기
+
+- [x] details, list reducer/action
+
+- [x] coinlist 불러와서 full name으로 바꿈
+
+- [x] coin img 넣기 -> api img에 흰배경.................................
+
+- [x] 배경이미지 바꿈
+
+  ​
+
+> 이미지 public/img/~에 넣었더니 src/에 넣어야 된다고 에러남.
+>
+> 
+>
+> ##### Failed to load https://www.cryptocompare.com/api/data/coinlist/: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+>
+> js의 동일 출처 정책 때문. 크롬에 아래 플로그인 설치
+>
+> https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?utm_source=chrome-ntp-icon
+
+
+
+해야할 것
+
+- tab 클릭이 안 됨.
+- 이름 옆에 이미지를 두고 싶음..
+- 차트 종가로 라인 그리기
