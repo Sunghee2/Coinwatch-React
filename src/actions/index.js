@@ -9,7 +9,7 @@ export const FETCH_COIN_DETAILS = 'FETCH_COIN_DETAILS';
 
 export function fetchCoinList() {
   const url = 'https://www.cryptocompare.com/api/data/coinlist/';
-  const request = axios.get(url);
+  const request = axios.get(url, { header: {'Access-Control-Allow-Origin': '*'}});
   return {
     type: FETCH_COIN_LIST,
     payload: request
@@ -18,7 +18,7 @@ export function fetchCoinList() {
 
 export function fetchCoin(coin) {
   if(!coin) {
-    coin='BTC,ETH,XRP,BCH,EOS,QTUM,DASH,BTG';
+    coin = 'BTC,ETH,XRP,BCH,EOS,QTUM,DASH,BTG';
   }
   const url = `${ROOT_URL_API}?fsyms=${coin}&tsyms=KRW&e=Bithumb`;
   const request = axios.get(url);

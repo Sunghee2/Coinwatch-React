@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import RGL, { WidthProvider } from 'react-grid-layout';
-import {
-  Sparklines,
-  SparklinesLine
-} from 'react-sparklines';
-import {fetchCoin, fetchCoinList} from '../actions';
 import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
+import RGL, { WidthProvider } from 'react-grid-layout';
+import Loader from 'react-loaders';
+import { Sparklines, SparklinesLine } from 'react-sparklines';
+
+import { fetchCoin, fetchCoinList } from '../actions';
 
 // http://api.openweathermap.org/data/2.5/forecast?q=seoul&appid=f24ae8d7f797c65bf93a9e2b9d3548bd
 // weather api 참조
@@ -29,27 +30,27 @@ class CoinList extends Component {
   }
 
   getColor(num) {
-    return num > 0 ? "color:green;" : "color:red;";
+    return num > 0 ? 'color:green;' : 'color:red;';
   }
  
   renderCoin(coins, coin_list) {
-    console.log(this.props.coin_list);
-    var rows=[];
+    var rows = [];
     var num = 0;
     for (var i in coins) {
       var layout = this.generateLayout(num);
       var imgUrl = ImgUrl + coin_list[i].ImageUrl;
-      console.log(imgUrl);
       var change24H = ((coins[i].KRW.PRICE - coins[i].KRW.OPEN24HOUR)/coins[i].KRW.OPEN24HOUR * 100).toFixed(2) + "%";
       rows.push(
-        <div className="card" key={coin_list[i].Id} data-grid={layout}>
-          <div className="card-body">
-            <div className="text-center">
-              <img className="coin_list_img" src={imgUrl}/>
-              <h5 className="coin-name">{coin_list[i].CoinName}</h5>
+        <div className = 'card' key = {coin_list[i].Id} data-grid = {layout}>
+          <div className = 'card-body'>
+            <div className = 'text-center'>
+              <Link to = {{ pathname: `/${i}`, state: { id: `${coin_list[i].Id}` }}}>
+                <img className = 'coin_list_img' src = {imgUrl}/>
+                <h5 className = 'coin-name'>{coin_list[i].CoinName}</h5>
+              </Link>
             </div>
-            <p className="coin-price" key={coins[i].KRW.PRICE}>₩ {this.numberWithCommas(coins[i].KRW.PRICE)}</p>
-            <p className="change24H">{change24H}</p>
+            <p className = 'coin-price' key = {coins[i].KRW.PRICE}>₩ {this.numberWithCommas(coins[i].KRW.PRICE)}</p>
+            <p className = 'change24H'>{change24H}</p>
               {/* style={this.getColor({change24H})}>{change24H}</p> */}
           </div>
         </div>
@@ -75,7 +76,7 @@ class CoinList extends Component {
     var coins = this.props.coins;
     var coin_list = this.props.coin_list;
     if (!coins || coins.length == 0 || !coin_list || coin_list.length == 0) {
-      return <div>Loading...</div>;
+      return <Loader type = 'pacman'/>;
     }
     return (
       <ReactGridLayout>
@@ -94,7 +95,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({fetchCoin, fetchCoinList}, dispatch);
+  return bindActionCreators({ fetchCoin, fetchCoinList }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinList);

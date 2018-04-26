@@ -6,10 +6,11 @@ const Chart = ({coin}) => {
   return (
     <div>
       <TradingViewWidget 
-        symbol={symbol}
-        locale="kr" 
-        allow_symbol_change={false}
-        show_popup_button={false}/>
+        symbol = {symbol}
+        locale = 'kr' 
+        allow_symbol_change = {false}
+        show_popup_button = {false}/>
+        // autosize/>
     </div>
   );
 };

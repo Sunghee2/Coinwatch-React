@@ -50,6 +50,8 @@
 
 - 자꾸 전체 다 다시 리로드됨.. 가격만 바뀔때로
 
+  ​
+
 
 
 ##### 18-04-24
@@ -72,8 +74,10 @@
 
   ​
 
+> 참고 : https://github.com/rafaelklaessen/react-tradingview-widget
+
 > 이미지 public/img/~에 넣었더니 src/에 넣어야 된다고 에러남.
->
+
 > 
 >
 > ##### Failed to load https://www.cryptocompare.com/api/data/coinlist/: No 'Access-Control-Allow-Origin' header is present on the requested resource.
@@ -86,6 +90,39 @@
 
 해야할 것
 
-- tab 클릭이 안 됨.
+- tab 클릭이 안 됨(해결)
 - 이름 옆에 이미지를 두고 싶음..
 - 차트 종가로 라인 그리기
+
+
+
+##### 18-04-26
+
+- [x] 코드 정리 (검색창 어떻게 할 것인지 생각해보기..)
+
+- [x] CoinHome - CoinShow 나눔
+
+- [x] 각 코인마다 차트 바꿈
+
+- [x] CoinShow - sticky header
+
+- [x] 정보 탭따로 components로 나눔
+
+- [x] 탭 클릭
+
+  ​
+
+
+
+> 참고 : https://github.com/yahoo/react-stickynode
+>
+> https://github.com/jonjaques/react-loaders
+
+> 탭 안눌린 것 -> 부트스트랩 js script 안넣어서
+>
+> show페이지에 symbol, id 다 필요한데 이걸로 fetchCoinList 하기 그럼...
+
+해야할 것
+
+- 탭 로딩
+- css불편해서 sass..깔까 고민중...
