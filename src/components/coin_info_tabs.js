@@ -48,20 +48,20 @@ class CoinInfoTabs extends Component {
             className = 'tab-pane fade show active' 
             id = 'home' 
             role = 'tabpanel'>
-            test~~~~~~~~~`
+            <div className = 'text-left' dangerouslySetInnerHTML={{ __html: coin_details.General.Description }}/>
             <br/>
           </div>
           <div 
             className = 'tab-pane fade' 
             id = 'features' 
             role = 'tabpanel'>
-            <div dangerouslySetInnerHTML={{ __html: coin_details.General.Features }}/>
+            <div className = 'text-left' dangerouslySetInnerHTML={{ __html: coin_details.General.Features }}/>
           </div>
           <div 
             className = 'tab-pane fade' 
             id = 'technology'
             role = 'tabpanel'>
-            <div dangerouslySetInnerHTML={{ __html: coin_details.General.Technology }}/>
+            <div className = 'text-left' dangerouslySetInnerHTML={{ __html: coin_details.General.Technology }}/>
           </div>
         </div>
       </div>

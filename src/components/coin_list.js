@@ -7,7 +7,8 @@ import RGL, { WidthProvider } from 'react-grid-layout';
 import Loader from 'react-loaders';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
 
-import { fetchCoin, fetchCoinList } from '../actions';
+import Chart from './chart_in_coin_home';
+import { fetchCoin, fetchCoinList, fetchCoinPriceHistory } from '../actions';
 
 // http://api.openweathermap.org/data/2.5/forecast?q=seoul&appid=f24ae8d7f797c65bf93a9e2b9d3548bd
 // weather api 참조
@@ -20,9 +21,10 @@ const ImgUrl = 'https://www.cryptocompare.com';
 class CoinList extends Component {
   componentWillMount() {
     this.props.fetchCoinList();
-    setInterval(() => {
-      this.props.fetchCoin(this.props.selected);
-    }, 2000);
+    // setInterval(() => {
+    //   this.props.fetchCoin(this.props.selected);
+    // }, 2000);
+    this.props.fetchCoin(this.props.selected);
   }
 
   numberWithCommas(x) {
@@ -30,16 +32,17 @@ class CoinList extends Component {
   }
 
   getColor(num) {
-    return num > 0 ? 'color:green;' : 'color:red;';
+    return num > 0 ? 'red' : 'green';
   }
  
   renderCoin(coins, coin_list) {
     var rows = [];
     var num = 0;
     for (var i in coins) {
+      this.props.fetchCoinPriceHistory(i);
       var layout = this.generateLayout(num);
       var imgUrl = ImgUrl + coin_list[i].ImageUrl;
-      var change24H = ((coins[i].KRW.PRICE - coins[i].KRW.OPEN24HOUR)/coins[i].KRW.OPEN24HOUR * 100).toFixed(2) + "%";
+      var change24H = ((coins[i].KRW.PRICE - coins[i].KRW.OPEN24HOUR)/coins[i].KRW.OPEN24HOUR * 100).toFixed(2);
       rows.push(
         <div className = 'card' key = {coin_list[i].Id} data-grid = {layout}>
           <div className = 'card-body'>
@@ -50,11 +53,13 @@ class CoinList extends Component {
               </Link>
             </div>
             <p className = 'coin-price' key = {coins[i].KRW.PRICE}>₩ {this.numberWithCommas(coins[i].KRW.PRICE)}</p>
-            <p className = 'change24H'>{change24H}</p>
+            <p className = 'change24H' style={{color: `${this.getColor(change24H)}`}}>{change24H} %</p>
+            {/* <Chart data={} */}
               {/* style={this.getColor({change24H})}>{change24H}</p> */}
           </div>
         </div>
       );
+      console.log(this.props.coin_price_list);
       num++;
     }
     return rows;
@@ -90,12 +95,13 @@ function mapStateToProps(state) {
   return {
     coins: state.coins.data,
     coin_list: state.coin_list.data,
+    coin_price_list: state.coin_price_list,
     selected: state.selected
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCoin, fetchCoinList }, dispatch);
+  return bindActionCreators({ fetchCoin, fetchCoinList, fetchCoinPriceHistory }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinList);
