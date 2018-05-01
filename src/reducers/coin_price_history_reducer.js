@@ -8,10 +8,9 @@ export default function(state={
     return {
       loading: true,
       error: '',
-      data: ''
+      data: state.data
     };
   case `${FETCH_COIN_PRICE_HISTORY}_FULFILLED`:
-    console.log('dsfa');
     return {
       loading: false,
       error: '',

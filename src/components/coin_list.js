@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-
+import _ from 'lodash';
 import RGL, { WidthProvider } from 'react-grid-layout';
 import Loader from 'react-loaders';
 import { Sparklines, SparklinesLine } from 'react-sparklines';
@@ -21,10 +21,10 @@ const ImgUrl = 'https://www.cryptocompare.com';
 class CoinList extends Component {
   componentWillMount() {
     this.props.fetchCoinList();
-    // setInterval(() => {
-    //   this.props.fetchCoin(this.props.selected);
-    // }, 2000);
-    this.props.fetchCoin(this.props.selected);
+    setInterval(() => {
+      this.props.fetchCoin(this.props.selected);
+    }, 2000);
+    // this.props.fetchCoin(this.props.selected);
   }
 
   numberWithCommas(x) {
@@ -35,35 +35,34 @@ class CoinList extends Component {
     return num > 0 ? 'red' : 'green';
   }
  
-  renderCoin(coins, coin_list) {
-    var rows = [];
-    var num = 0;
-    for (var i in coins) {
-      this.props.fetchCoinPriceHistory(i);
-      var layout = this.generateLayout(num);
-      var imgUrl = ImgUrl + coin_list[i].ImageUrl;
-      var change24H = ((coins[i].KRW.PRICE - coins[i].KRW.OPEN24HOUR)/coins[i].KRW.OPEN24HOUR * 100).toFixed(2);
-      rows.push(
-        <div className = 'card' key = {coin_list[i].Id} data-grid = {layout}>
-          <div className = 'card-body'>
-            <div className = 'text-center'>
-              <Link to = {{ pathname: `/${i}`, state: { id: `${coin_list[i].Id}` }}}>
-                <img className = 'coin_list_img' src = {imgUrl}/>
-                <h5 className = 'coin-name'>{coin_list[i].CoinName}</h5>
-              </Link>
-            </div>
-            <p className = 'coin-price' key = {coins[i].KRW.PRICE}>₩ {this.numberWithCommas(coins[i].KRW.PRICE)}</p>
-            <p className = 'change24H' style={{color: `${this.getColor(change24H)}`}}>{change24H} %</p>
-            {/* <Chart data={} */}
-              {/* style={this.getColor({change24H})}>{change24H}</p> */}
-          </div>
-        </div>
-      );
-      console.log(this.props.coin_price_list);
-      num++;
-    }
-    return rows;
-  }
+  // renderCoin(coins, coin_list) {
+  //   var rows = [];
+  //   var num = 0;
+  //   for (var i in coins) {
+  //     this.props.fetchCoinPriceHistory(i);
+  //     var layout = this.generateLayout(num);
+  //     var imgUrl = ImgUrl + coin_list[i].ImageUrl;
+  //     var change24H = ((coins[i].KRW.PRICE - coins[i].KRW.OPEN24HOUR)/coins[i].KRW.OPEN24HOUR * 100).toFixed(2);
+  //     rows.push(
+  //       <div className = 'card' key = {coin_list[i].Id} data-grid = {layout}>
+  //         <div className = 'card-body'>
+  //           <div className = 'text-center'>
+  //             <Link to = {{ pathname: `/${i}`, state: { id: `${coin_list[i].Id}` }}}>
+  //               <img className = 'coin_list_img' src = {imgUrl}/>
+  //               <h5 className = 'coin-name'>{coin_list[i].CoinName}</h5>
+  //             </Link>
+  //           </div>
+  //           <p className = 'coin-price' key = {coins[i].KRW.PRICE}>₩ {this.numberWithCommas(coins[i].KRW.PRICE)}</p>
+  //           <p className = 'change24H' style={{color: `${this.getColor(change24H)}`}}>{change24H} %</p>
+  //           {/* <Chart data={} */}
+  //             {/* style={this.getColor({change24H})}>{change24H}</p> */}
+  //         </div>
+  //       </div>
+  //     );
+  //     num++;
+  //   }
+  //   return rows;
+  // }
 
 
   generateLayout(num) {
@@ -80,14 +79,58 @@ class CoinList extends Component {
   render() {
     var coins = this.props.coins;
     var coin_list = this.props.coin_list;
+    var num = 0;
     if (!coins || coins.length == 0 || !coin_list || coin_list.length == 0) {
-      return <Loader type = 'pacman'/>;
+      return <Loader type = 'pacman'/>; //안됨 다른 걸로 바꾸기
     }
     return (
       <ReactGridLayout>
-        {this.renderCoin(this.props.coins, this.props.coin_list)}
+        { _.map(this.props.coins, (v, k) => {
+          console.log(coin_list);
+          console.log(coins);
+          console.log(num);
+          var layout = this.generateLayout(num++);
+          var imgUrl = ImgUrl + coin_list[k].ImageUrl;
+          var change24H = ((coins[k].KRW.PRICE - coins[k].KRW.OPEN24HOUR)/coins[k].KRW.OPEN24HOUR * 100).toFixed(2);
+          return (
+            <div className = 'card' key = {coin_list[k].Id} data-grid = {layout}>
+              <div className = 'card-body'>
+                <div className = 'text-center'>
+                  <Link to = {{ pathname: `/${k}`, state: { id: `${coin_list[k].Id}` }}}>
+                    <img className = 'coin_list_img' src = {imgUrl}/>
+                    <h5 className = 'coin-name'>{coin_list[k].CoinName}</h5>
+                  </Link>
+                </div>
+                <p className = 'coin-price' key = {coins[k].KRW.PRICE}>₩ {this.numberWithCommas(coins[k].KRW.PRICE)}</p>
+                <p className = 'change24H' style={{color: `${this.getColor(change24H)}`}}>{change24H} %</p>
+                {/* <Chart data={} */}
+                {/* style={this.getColor({change24H})}>{change24H}</p> */}
+              </div>
+            </div>
+          );
+        })
+        }
       </ReactGridLayout>
     );
+
+    // <div className = 'card' key = {coin_list[i].Id} data-grid = {layout}>
+    //       <div className = 'card-body'>
+    //         <div className = 'text-center'>
+    //           <Link to = {{ pathname: `/${i}`, state: { id: `${coin_list[i].Id}` }}}>
+    //             <img className = 'coin_list_img' src = {imgUrl}/>
+    //             <h5 className = 'coin-name'>{coin_list[i].CoinName}</h5>
+    //           </Link>
+    //         </div>
+    //         <p className = 'coin-price' key = {coins[i].KRW.PRICE}>₩ {this.numberWithCommas(coins[i].KRW.PRICE)}</p>
+    //         <p className = 'change24H' style={{color: `${this.getColor(change24H)}`}}>{change24H} %</p>
+    //         {/* <Chart data={} */}
+    //           {/* style={this.getColor({change24H})}>{change24H}</p> */}
+    //       </div>
+    //     </div>
+      // <ReactGridLayout>
+      //   {this.renderCoin(this.props.coins, this.props.coin_list)}
+      // </ReactGridLayout>
+    // );
   }
 }
 

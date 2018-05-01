@@ -8,7 +8,7 @@ export default function(state={
     return {
       loading: true,
       error: '',
-      data: ''
+      data: state.data
     };
   case `${FETCH_COIN_LIST}_FULFILLED`:
     return {
