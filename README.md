@@ -1,4 +1,4 @@
-# Coinwatch_web
+Coinwatch_web
 
 ### [프로젝트 1] 암호화폐 시세 확인 프로그램 만들기
  - React 를 이용하여 암호화폐 시세를 확인하는 프로그램을 작성하시오.
@@ -139,4 +139,37 @@
 home에 작은 차트 하나씩 그리고 싶었는데 api coin 하나씩 콜해야됨.... 
 
 - [x] %에 색 넣기
+
+
+
+
+> key, _grid가 undefined -> return을 안씀..
+>
+> object 합칠 때 {...state.data, coins: action.payload.data.RAW} 있어야 하나봄.. 순서 중요.
+>
+> card 따로 component로 만들었는데 grid-layout 적용이 안됨..
+
+
+
+##### 18-05-02
+
+- [x] 호가창
+- [x] 차트 크기 맞추기
+- [x] show top의 가격 있는 곳 component로 만들기
+- [x] coin_info_top 정리
+- [x] 체결창
+
+>toFixed -> number로 바꿔서
+>
+>reducer에서 object 합칠 때 이름 따로 주는 법 있나? -> 해결
+>
+>호가창 table 안에 table로 넣기 -> colgroup 안됨..
+>
+>td안에 div height=0 
+>
+>호가창 div에 text가 밀림 -> position
+>
+>체결시간 월-일 시-초 만 -> date로 바꿔서 get~ (month +1 / getDate)
+
+
 

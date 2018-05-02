@@ -1,4 +1,7 @@
 /* @import '../node_modules/loaders.css/src/animations/pacman.scss'; */
+html {
+  height: 100%;
+}
 
 /* All */
 body {
@@ -7,6 +10,7 @@ body {
     background-size: cover;
     vertical-align: middle !important;
     text-align: center !important;
+    height: 100%;
 }
 
 /* header_home */
@@ -60,10 +64,38 @@ p.header-home {
   font-family: 'Gugi', cursive;
 }
 
+/* CoinShow-body */
+.CoinShow-body {
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 2%;
+}
+
 /* coin_info_tabs */
 .tab-content {
   background-color: white;
   font-family: 'Trebuchet MS', sans-serif;
+}
+
+/* coin_info_top */
+td.coin-title {
+  font-size: 2em;
+}
+
+.coin-info-price {
+  font-size: 1.5em;
+}
+
+.word-sm {
+  font-size: 0.8em;
+}
+
+.per-bar {
+  height: inherit;
+}
+
+td {
+  width: 33%;
 }
 
 /* test */

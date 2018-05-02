@@ -4,13 +4,13 @@ import TradingViewWidget from 'react-tradingview-widget';
 const Chart = ({coin}) => {
   const symbol = `BITHUMB:${coin}KRW`;
   return (
-    <div>
+    <div style={{height : '1000'}}>
       <TradingViewWidget 
         symbol = {symbol}
         locale = 'kr' 
         allow_symbol_change = {false}
-        show_popup_button = {false}/>
-        // autosize/>
+        show_popup_button = {false}
+        width = '100%'/>
     </div>
   );
 };

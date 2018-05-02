@@ -3,14 +3,15 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
+import RGL, { WidthProvider } from 'react-grid-layout';
 import Chart from './chart_in_coin_home';
 import { fetchCoin, fetchCoinPriceHistory } from '../actions';
 
 const ImgUrl = 'https://www.cryptocompare.com';
+const arr_coin = ['BTC','ETH','XRP','BCH','EOS','QTUM','DASH','BTG'];
 
 class CoinCard extends Component {
   componentWillMount() {
-    console.log("adsfadsfsdadfsfads");
     this.props.fetchCoin(this.props.coin);
   }
 
@@ -22,7 +23,8 @@ class CoinCard extends Component {
     return num > 0 ? 'red' : 'green';
   }
 
-  generateLayout(num) {
+  generateLayout(coin_name) {
+    const num = arr_coin.indexOf(coin_name);
     return {
       x: (num * 3) % 12,
       y: Math.floor(num / 4),
@@ -34,12 +36,12 @@ class CoinCard extends Component {
 
   render(){
     const coin = this.props.coin;
-    const coin_price = this.props.coins;
+    const coin_price = this.props.coins[coin];
     const coin_list = this.props.coin_list[coin];
-    console.log("coin");
-    console.log(coin, coin_price, "adsfasf", coin_list);
-    var layout = this.generateLayout(this.props.num);
-    var imgUrl = ImgUrl + coin_list[coin].ImageUrl;
+
+
+    var layout = this.generateLayout(coin);
+    var imgUrl = ImgUrl + coin_list.ImageUrl;
     var change24H = ((coin_price.KRW.PRICE - coin_price.KRW.OPEN24HOUR)/coin_price.KRW.OPEN24HOUR * 100).toFixed(2);
     return (
       <div className = 'card' key = {coin_list.Id} data-grid = {layout}>
@@ -62,7 +64,7 @@ class CoinCard extends Component {
 
 function mapStateToProps(state) {
   return {
-    coins: state.coins.data,
+    coins: state.coins.data.coins,
     coin_list: state.coin_list.data,
     coin_price_list: state.coin_price_list,
     selected: state.selected
