@@ -1,4 +1,4 @@
-Coinwatch_web
+# Coinwatch_web
 
 ### [프로젝트 1] 암호화폐 시세 확인 프로그램 만들기
  - React 를 이용하여 암호화폐 시세를 확인하는 프로그램을 작성하시오.
@@ -172,4 +172,12 @@ home에 작은 차트 하나씩 그리고 싶었는데 api coin 하나씩 콜해
 >체결시간 월-일 시-초 만 -> date로 바꿔서 get~ (month +1 / getDate)
 
 
+
+##### 18-05-03
+
+
+
+> row로 push하니깐 다시 render가 안되는 것 같음... 바꾸자..
+
+![1525336448015](C:\Users\630su\AppData\Local\Temp\1525336448015.png)
 

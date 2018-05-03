@@ -6,7 +6,9 @@ import { fetchCoinTransaction } from '../actions';
 
 class Contracts extends Component {
   componentDidMount() {
-    this.props.fetchCoinTransaction(this.props.coin);
+    setInterval(() => {
+      this.props.fetchCoinTransaction(this.props.coin);
+    }, 3000);
   }
 
   getColor(type) {
@@ -37,7 +39,6 @@ class Contracts extends Component {
     if (!transactions || transactions.length == 0) {
       return <div>Loding..</div>;
     }
-    console.log(transactions);
     return (
       <div className = 'table-responsive rounded shadow-sm mt-3'>
         <table className = 'table'>

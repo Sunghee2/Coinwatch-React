@@ -22,9 +22,9 @@ const ImgUrl = 'https://www.cryptocompare.com';
 class CoinList extends Component {
   componentWillMount() {
     this.props.fetchCoinList();
-    setInterval(() => {
-      this.props.fetchCoin(this.props.selected);
-    }, 2000);
+    // setInterval(() => {
+    //   this.props.fetchCoin(this.props.selected);
+    // }, 2000);
     // this.props.fetchCoin(this.props.selected);
   }
 

@@ -41,7 +41,7 @@ class CoinShow extends Component {
         <div className = 'CoinShow-body row'>
           <div className = 'col-8'>
             <div>
-              <CoinInfoTop coin = {coin.id}/>
+              <CoinInfoTop key = {coin.id} coin = {coin.id}/>
             </div>
             <div>
               <Chart coin = {coin.id}/>
@@ -55,7 +55,7 @@ class CoinShow extends Component {
               <OrderBook key = {coin.id} coin = {coin.id}/>
             </div>
             <div>
-              <Contracts coin = {coin.id}/>
+              <Contracts key = {coin.id} coin = {coin.id}/>
             </div>
           </div>
         </div>

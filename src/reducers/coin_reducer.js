@@ -11,10 +11,11 @@ export default function(state={
       data: {...state.data}
     };
   case `${FETCH_COIN}_FULFILLED`:
+  // console.log("reducer", action.payload.data.RAW['EOS'].KRW.VOLUME24HOUR);
     return {
       loading: false,
       error: '',
-      data: {coins: action.payload.data.RAW, ...state.data}
+      data: {...state.data, coins: action.payload.data.RAW}
     };
   case `${FETCH_COIN}_REJECTED`:
     return {

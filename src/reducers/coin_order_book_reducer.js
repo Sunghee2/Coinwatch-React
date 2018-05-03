@@ -14,7 +14,7 @@ export default function(state={
     return {
       loading: false,
       error: '',
-      data: { [action.payload.data.data.order_currency]: action.payload.data, ...state.data }
+      data: { ...state.data, [action.payload.data.data.order_currency]: action.payload.data }
     };
   case `${FETCH_COIN_ORDER_BOOK}_REJECTED`:
     return {

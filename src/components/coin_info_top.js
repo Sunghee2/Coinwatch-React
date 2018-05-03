@@ -5,6 +5,12 @@ import { connect } from 'react-redux';
 import { fetchCoin } from '../actions';
 
 class CoinInfoTop extends Component {
+  componentDidMount() {
+    setInterval(() => {
+      this.props.fetchCoin(this.props.coin);
+    }, 1000);
+  }
+
   numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
@@ -17,7 +23,7 @@ class CoinInfoTop extends Component {
     const coin_price = this.props.coins[this.props.coin].KRW;
     const color = this.getColor(coin_price.CHANGEPCT24HOUR);
     return (
-      <table className = 'table table-borderless table-light rounded-top shadow-sm text-left mb-0'>
+      <table className = 'table table-borderless table-light rounded-top shadow-sm text-left mb-0' key = {this.props.coin}>
         <thead>
           <tr>
             <td className = 'coin-title font-weight-bold' colSpan = '4'>{this.props.coin}</td>
@@ -25,7 +31,7 @@ class CoinInfoTop extends Component {
         </thead>
         <tbody className = 'coin-info-tbody'>
           <tr>
-            <td className = 'pb-0 pt-0' colSpan = '2' style={{color: `${color}`}}><span className = 'coin-info-price font-weight-bold'>{this.numberWithCommas(coin_price.PRICE)}</span><span className = 'word-sm ml-1'>KRW</span></td>
+            <td className = 'pb-0 pt-0' key = {coin_price.PRICE} colSpan = '2' style={{color: `${color}`}}><span className = 'coin-info-price font-weight-bold'>{this.numberWithCommas(coin_price.PRICE)}</span><span className = 'word-sm ml-1'>KRW</span></td>
             <td className = 'pb-0 pt-0'><span className = 'word-sm'>고가</span><span className = 'm-3' style={{color: 'red'}}>{this.numberWithCommas(coin_price.HIGH24HOUR)}</span></td>
             <td className = 'pb-0 pt-0'><span className = 'word-sm mr-3'>거래량(24H)</span>{Number(coin_price.VOLUME24HOUR).toFixed(4)}<span className = 'word-sm ml-1'>{this.props.coin}</span></td>
           </tr>
@@ -41,6 +47,7 @@ class CoinInfoTop extends Component {
 }
 
 function mapStateToProps(state) {
+  // console.log(state.coins.data.coins['EOS'].KRW.VOLUME24HOUR);
   return {
     coins: state.coins.data.coins,
   };

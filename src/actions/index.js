@@ -21,6 +21,7 @@ export function fetchCoinList() {
 }
 
 export function fetchCoin(coin) {
+  console.log(coin, "들어옴~");
   if(!coin) {
     coin = 'BTC,ETH,XRP,BCH,EOS,QTUM,DASH,BTG';
   }
