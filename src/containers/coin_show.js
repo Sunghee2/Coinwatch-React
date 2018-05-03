@@ -26,10 +26,10 @@ class CoinShow extends Component {
   render(){
     const coins = this.props.coins;
     const coin = this.props.match.params;
-    if (!coins[coin.id] || coins[coin.id].length === 0) {
+    if (!coins || !coins[coin.id] || coins[coin.id].length === 0) {
       return <div/>; //안됨 다른 걸로 바꾸기
     }
-    const coin_price = this.props.coins[coin.id].KRW;
+    console.log(coins[coin.id]);
     const id = this.props.location.state.id;
     return (
       <div className = 'CoinShow'>
@@ -64,7 +64,7 @@ class CoinShow extends Component {
 
 function mapStateToProps(state) {
   return {
-    coins: state.coins.data,
+    coins: state.coins,
   };
 }
 

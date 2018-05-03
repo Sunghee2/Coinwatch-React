@@ -49,7 +49,7 @@ class CoinInfoTop extends Component {
 function mapStateToProps(state) {
   // console.log(state.coins.data.coins['EOS'].KRW.VOLUME24HOUR);
   return {
-    coins: state.coins.data,
+    coins: state.coins,
   };
 }
 

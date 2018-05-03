@@ -7,12 +7,12 @@ import Chart from './chart_in_coin_home';
 import { fetchCoin, fetchCoinPriceHistory } from '../actions';
 
 const ImgUrl = 'https://www.cryptocompare.com';
-const arr_coin = ['BTC','ETH','XRP','BCH','EOS','QTUM','DASH','BTG'];
 
 class CoinCard extends Component {
   componentDidMount() {
     setInterval(() => {
       this.props.fetchCoin(this.props.coin);
+      this.props.fetchCoinPriceHistory(this.props.coin);
     }, 3000);
     // this.props.fetchCoin(this.props.coin);
   }
@@ -25,43 +25,32 @@ class CoinCard extends Component {
     return num > 0 ? 'red' : 'green';
   }
 
-  generateLayout(coin_name) {
-    const num = arr_coin.indexOf(coin_name);
-    return {
-      x: (num * 3) % 12,
-      y: Math.floor(num / 4),
-      w: 3,
-      h: 2,
-      isResizable: false,
-    };
-  }
-
   render(){
-    const coin = this.props.coin;
+    const sym = this.props.coin;
+    const coins = this.props.coins[sym];
 
-    if (!this.props.coins[coin] || this.props.coins[coin].length == 0) {
+    
+    if (!coins || coins.length == 0 || !coins.KRW || !coins.price_history) {
       return <div/>; //안됨 다른 걸로 바꾸기
     }
-
-    const coin_price = this.props.coins[coin];
-    const coin_list = this.props.coin_list[coin];
+    console.log(coins);
     
-    var layout = this.generateLayout(coin);
+    const coin_list = this.props.coin_list[sym];
+    
     var imgUrl = ImgUrl + coin_list.ImageUrl;
-    var change24H = ((coin_price.KRW.PRICE - coin_price.KRW.OPEN24HOUR)/coin_price.KRW.OPEN24HOUR * 100).toFixed(2);
     return (
-      <div className = 'card' key = {coin}>
+      <div className = 'card' key = {sym}>
         <div className = 'card-body'>
           <div className = 'text-center'>
-            <Link to = {{ pathname: `/${coin}`, state: { id: `${coin_list.Id}` }}}>
+            <Link to = {{ pathname: `/${sym}`, state: { id: `${coin_list.Id}` }}}>
               <img className = 'coin_list_img' src = {imgUrl}/>
               <h5 className = 'coin-name'>{coin_list.CoinName}</h5>
             </Link>
           </div>
-          <p className = 'coin-price' key = {coin_price.KRW.PRICE}>₩ {this.numberWithCommas(coin_price.KRW.PRICE)}</p>
-          <p className = 'change24H' style={{color: `${this.getColor(change24H)}`}}>{change24H} %</p>
-          {/* <Chart data={} */}
-          {/* style={this.getColor({change24H})}>{change24H}</p> */}
+          <p className = 'coin-price font-weight-bold' key = {coins.KRW.PRICE}>₩ {this.numberWithCommas(coins.KRW.PRICE)} <span className = 'change24H ml-1 font-weight-bold' style = {{color: `${this.getColor(coins.KRW.CHANGEPCT24HOUR)}`}}>{Number(coins.KRW.CHANGEPCT24HOUR).toFixed(2)} %</span></p>
+          <div key = {coins.price_history[0].time} className = 'mx-auto'>
+            <Chart key = {coins.price_history[0].time} data = {coins.price_history.map(e => (e.close))}/>
+          </div>
         </div>
       </div>
     );
@@ -69,8 +58,9 @@ class CoinCard extends Component {
 }
 
 function mapStateToProps(state) {
+  // console.log(state.coins);
   return {
-    coins: state.coins.data,
+    coins: state.coins,
     coin_list: state.coin_list.data,
     coin_price_list: state.coin_price_list,
     selected: state.selected

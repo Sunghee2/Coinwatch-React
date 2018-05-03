@@ -178,8 +178,13 @@ home에 작은 차트 하나씩 그리고 싶었는데 api coin 하나씩 콜해
 - [x] 호가창 움직이도록
 - [x] card만 fetchcoin할 수 있도록
 - [x] 경고 정리
-- [ ] ​
+- [x] home grid 고침..
+- [x] home 에 차트 넣기
+- [x] 그리드 정리
+- [x] data있는데 그냥 계산으로 한 것 정리하기
 
 > row로 push하니깐 다시 render가 안되는 것 같음... 바꾸자.. -> reducer가 잘못됨.....{} 합칠 때 순서.... 그래도 slice로 정리해서 깔끔해짐..
 >
 > 그리드 안 된 이유 -> div로 감싸야....
+>
+> grid 깜빡깜빡.. -> reducer에서 loading, error, data 없앴으면서 state.data에 object 더했음..

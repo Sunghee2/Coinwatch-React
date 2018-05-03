@@ -21,9 +21,6 @@ export function fetchCoinList() {
 }
 
 export function fetchCoin(coin) {
-  if(!coin) {
-    coin = 'BTC,ETH,XRP,BCH,EOS,QTUM,DASH,BTG';
-  }
   const url = `${ROOT_URL_API}?fsyms=${coin}&tsyms=KRW&e=Bithumb`;
   const request = axios.get(url);
   return {
@@ -50,8 +47,9 @@ export function fetchCoinDetails(id) {
 }
 
 export function fetchCoinPriceHistory(coin) {
-  const url = `https://min-api.cryptocompare.com/data/histohour?fsym=${coin}&tsym=KRW&limit=60&aggregate=3&e=BITHUMB`;
+  const url = `https://min-api.cryptocompare.com/data/histohour?fsym=${coin}&tsym=KRW&limit=60&aggregate=12&e=BITHUMB`;
   const request = axios.get(url);
+  // console.log("들어왔어", coin);
   return {
     type: FETCH_COIN_PRICE_HISTORY,
     payload: request,

@@ -25,12 +25,6 @@ p.header-home {
     color: whitesmoke;
 }
 
-/* search_bar */
-/* form.searchBar {
-  margin-left: 30%;
-  margin-right: 30%;
-} */
-
 /* coin_list */
 .card { 
   background-color: rgba(245, 245, 245, 0.8); 
@@ -43,6 +37,12 @@ p.header-home {
 .coin_list_img {
   width: 2em;
   height: 2em;
+}
+
+/* chart_in_coin_home */
+.chart-home {
+  width: 10em;
+  height: 8em;
 }
 
 /* CoinShow */

@@ -8,11 +8,6 @@ import Loader from 'react-loaders';
 import Card from './coin_card';
 import { fetchCoin, fetchCoinList, fetchCoinPriceHistory } from '../actions';
 
-// http://api.openweathermap.org/data/2.5/forecast?q=seoul&appid=f24ae8d7f797c65bf93a9e2b9d3548bd
-// weather api 참조
-
-// https://min-api.cryptocompare.com/data/histohour?fsym=BTC&tsym=KRW&limit=60&aggregate=3&e=BITHUMB
-// 차트그릴때 1시간 api
 const ReactGridLayout = WidthProvider(RGL);
 
 class CoinList extends Component {
@@ -30,16 +25,16 @@ class CoinList extends Component {
 
   generateLayout(num) {
     return {
-      x: (num * 3) % 12,
-      y: Math.floor(num / 4),
-      w: 3,
+      x: ((num) * 2) % 12,
+      y: Math.floor(num / 2),
+      w: 2,
       h: 2,
       isResizable: false,
     };
   }
 
   render() {
-    const arr_coin = ['BTC','ETH','XRP','BCH','EOS','QTUM','DASH','BTG','ZEC','XMR','LTC','ETC','ICX'];
+    const arr_coin = ['BTC','ETH','XRP','BCH','EOS','QTUM','DASH','BTG','ZEC','XMR','LTC','ETC'];
     var coin_list = this.props.coin_list;
     var num = 0;
     if (!coin_list || coin_list.length == 0) {
