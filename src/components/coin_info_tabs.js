@@ -10,7 +10,7 @@ class CoinInfoTabs extends Component {
 
   render() {
     const coin_details = this.props.coin_details;
-    if(!coin_details || coin_details.length == 0) {
+    if(!coin_details || coin_details.length === 0) {
       return <div>Loding..</div>;
     }
     return (
@@ -20,8 +20,7 @@ class CoinInfoTabs extends Component {
             <a 
               className = 'nav-link active' 
               data-toggle = 'tab' 
-              href = '#home' 
-              aria-selected = 'true'>
+              href = '#home' >
               {coin_details.General.Symbol}
             </a>
           </li>

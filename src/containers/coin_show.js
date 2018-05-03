@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import RGL, { WidthProvider } from 'react-grid-layout';
-import { Sparklines, SparklinesLine } from 'react-sparklines';
 import { fetchCoin, fetchCoinDetails } from '../actions';
 import { bindActionCreators } from 'redux';
 
@@ -16,9 +14,9 @@ import Contracts from '../components/contracts';
 // https://www.cryptocompare.com/api/data/coinsnapshotfullbyid?id=1182
 
 class CoinShow extends Component {
-  componentWillMount() {
+  componentDidMount() {
     // this.props.fetchCoin(this.props.match.params.id);
-    this.props.fetchCoin();
+    this.props.fetchCoin(this.props.match.params.id);
   }
 
   numberWithCommas(x) {
@@ -27,10 +25,10 @@ class CoinShow extends Component {
 
   render(){
     const coins = this.props.coins;
-    if (!coins || coins.length == 0) {
+    const coin = this.props.match.params;
+    if (!coins[coin.id] || coins[coin.id].length === 0) {
       return <div/>; //안됨 다른 걸로 바꾸기
     }
-    const coin = this.props.match.params;
     const coin_price = this.props.coins[coin.id].KRW;
     const id = this.props.location.state.id;
     return (
@@ -66,7 +64,7 @@ class CoinShow extends Component {
 
 function mapStateToProps(state) {
   return {
-    coins: state.coins.data.coins,
+    coins: state.coins.data,
   };
 }
 

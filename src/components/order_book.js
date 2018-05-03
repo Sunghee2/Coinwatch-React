@@ -23,7 +23,7 @@ class OrderBook extends Component {
     }
     return _.orderBy(_.slice(asks, 0, 5), 'price', 'desc').map((v) => {
       const width = (v.quantity/sum)*10000 > 100 ? '100%':(v.quantity/sum)*100 + '%'; 
-      const marginLeft = width=='100%'? '0':100-((v.quantity/sum)*100) + "%";
+      const marginLeft = width==='100%'? '0':100-((v.quantity/sum)*100) + "%";
       const key = timestamp + v.price;
       return (
         <tr key = {key} className = 'h-100'>
@@ -66,7 +66,7 @@ class OrderBook extends Component {
   render() {
     const coin = this.props.coin;
     const order_book = this.props.coin_order_book[coin];
-    if (!order_book || order_book.length == 0) {
+    if (!order_book || order_book.length === 0) {
       return <div>Loding..</div>;
     }
     return (

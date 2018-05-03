@@ -21,7 +21,6 @@ export function fetchCoinList() {
 }
 
 export function fetchCoin(coin) {
-  console.log(coin, "들어옴~");
   if(!coin) {
     coin = 'BTC,ETH,XRP,BCH,EOS,QTUM,DASH,BTG';
   }
@@ -29,7 +28,8 @@ export function fetchCoin(coin) {
   const request = axios.get(url);
   return {
     type: FETCH_COIN,
-    payload: request
+    payload: request,
+    meta: coin
   };
 }
 
@@ -54,7 +54,8 @@ export function fetchCoinPriceHistory(coin) {
   const request = axios.get(url);
   return {
     type: FETCH_COIN_PRICE_HISTORY,
-    payload: request
+    payload: request,
+    meta: coin
   };
 }
 
@@ -63,7 +64,8 @@ export function fetchCoinOrderBook(coin) {
   const request = axios.get(url);
   return {
     type: FETCH_COIN_ORDER_BOOK,
-    payload: request
+    payload: request,
+    meta: coin
   };
 }
 
@@ -72,6 +74,7 @@ export function fetchCoinTransaction(coin) {
   const request = axios.get(url);
   return {
     type: FETCH_COIN_TRANSACTION,
-    payload: request
+    payload: request,
+    meta: coin
   };
 } 

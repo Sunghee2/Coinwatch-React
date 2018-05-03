@@ -12,7 +12,7 @@ class Contracts extends Component {
   }
 
   getColor(type) {
-    return type == 'bid'? 'red' : 'green';
+    return type === 'bid'? 'red' : 'green';
   }
 
   numberWithCommas(x) {
@@ -36,7 +36,7 @@ class Contracts extends Component {
 
   render() {
     const transactions = this.props.coin_transaction['data'];
-    if (!transactions || transactions.length == 0) {
+    if (!transactions || transactions.length === 0) {
       return <div>Loding..</div>;
     }
     return (

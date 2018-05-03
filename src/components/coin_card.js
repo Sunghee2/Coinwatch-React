@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import RGL, { WidthProvider } from 'react-grid-layout';
 import Chart from './chart_in_coin_home';
 import { fetchCoin, fetchCoinPriceHistory } from '../actions';
 
@@ -11,8 +10,11 @@ const ImgUrl = 'https://www.cryptocompare.com';
 const arr_coin = ['BTC','ETH','XRP','BCH','EOS','QTUM','DASH','BTG'];
 
 class CoinCard extends Component {
-  componentWillMount() {
-    this.props.fetchCoin(this.props.coin);
+  componentDidMount() {
+    setInterval(() => {
+      this.props.fetchCoin(this.props.coin);
+    }, 3000);
+    // this.props.fetchCoin(this.props.coin);
   }
 
   numberWithCommas(x) {
@@ -36,15 +38,19 @@ class CoinCard extends Component {
 
   render(){
     const coin = this.props.coin;
+
+    if (!this.props.coins[coin] || this.props.coins[coin].length == 0) {
+      return <div/>; //안됨 다른 걸로 바꾸기
+    }
+
     const coin_price = this.props.coins[coin];
     const coin_list = this.props.coin_list[coin];
-
-
+    
     var layout = this.generateLayout(coin);
     var imgUrl = ImgUrl + coin_list.ImageUrl;
     var change24H = ((coin_price.KRW.PRICE - coin_price.KRW.OPEN24HOUR)/coin_price.KRW.OPEN24HOUR * 100).toFixed(2);
     return (
-      <div className = 'card' key = {coin_list.Id} data-grid = {layout}>
+      <div className = 'card' key = {coin}>
         <div className = 'card-body'>
           <div className = 'text-center'>
             <Link to = {{ pathname: `/${coin}`, state: { id: `${coin_list.Id}` }}}>
@@ -64,7 +70,7 @@ class CoinCard extends Component {
 
 function mapStateToProps(state) {
   return {
-    coins: state.coins.data.coins,
+    coins: state.coins.data,
     coin_list: state.coin_list.data,
     coin_price_list: state.coin_price_list,
     selected: state.selected

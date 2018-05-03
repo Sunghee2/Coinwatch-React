@@ -3,6 +3,7 @@ import {FETCH_COIN} from '../actions';
 export default function(state={
   loading: false, error: '', data: []
 }, action) {
+  // console.log(action);
   switch (action.type) {
   case `${FETCH_COIN}_PENDING`:
     return {
@@ -11,11 +12,11 @@ export default function(state={
       data: {...state.data}
     };
   case `${FETCH_COIN}_FULFILLED`:
-  // console.log("reducer", action.payload.data.RAW['EOS'].KRW.VOLUME24HOUR);
+  // console.log("reducer", action.meta);
     return {
       loading: false,
       error: '',
-      data: {...state.data, coins: action.payload.data.RAW}
+      data: {...state.data, [action.meta]: action.payload.data.RAW[action.meta]}
     };
   case `${FETCH_COIN}_REJECTED`:
     return {
