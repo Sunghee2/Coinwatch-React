@@ -188,3 +188,12 @@ home에 작은 차트 하나씩 그리고 싶었는데 api coin 하나씩 콜해
 > 그리드 안 된 이유 -> div로 감싸야....
 >
 > grid 깜빡깜빡.. -> reducer에서 loading, error, data 없앴으면서 state.data에 object 더했음..
+
+
+
+##### 18-05-04
+
+- [x] reducer 정리
+- [x] 탭 title 설정
+
+> 졸면서 과제했더니 전체적으로 이상해짐 무언가......다음부터그러지말아야지...

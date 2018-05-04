@@ -12,7 +12,7 @@ export const FETCH_COIN_ORDER_BOOK = 'FETCH_COIN_ORDER_BOOK';
 export const FETCH_COIN_TRANSACTION = 'FETCH_COIN_TRANSACTION';
 
 export function fetchCoinList() {
-  const url = 'https://www.cryptocompare.com/api/data/coinlist/';
+  const url = 'https://min-api.cryptocompare.com/data/all/coinlist';
   const request = axios.get(url, { header: {'Access-Control-Allow-Origin': '*'}});
   return {
     type: FETCH_COIN_LIST,
@@ -37,12 +37,13 @@ export function selectCoin(coin) {
   };
 }
 
-export function fetchCoinDetails(id) {
+export function fetchCoinDetails(id, coin) {
   const url = `${BASE_URL_API}?id=${id}`;
   const request = axios.get(url);
   return {
     type: FETCH_COIN_DETAILS,
-    payload: request
+    payload: request,
+    meta: coin
   };
 }
 
@@ -68,6 +69,7 @@ export function fetchCoinOrderBook(coin) {
 }
 
 export function fetchCoinTransaction(coin) {
+  
   const url = `https://api.bithumb.com/public/recent_transactions/${coin}`;
   const request = axios.get(url);
   return {

@@ -5,14 +5,16 @@ import { connect } from 'react-redux';
 
 class CoinInfoTabs extends Component {
   componentDidMount() {
-    this.props.fetchCoinDetails(this.props.id);
+    this.props.fetchCoinDetails(this.props.id, this.props.coin);
   }
 
   render() {
-    const coin_details = this.props.coin_details;
-    if(!coin_details || coin_details.length === 0) {
+    const coins = this.props.coins;
+    const sym = this.props.coin;
+    if(!coins || coins.length === 0 || !coins[sym].details || coins[sym].details.length === 0) {
       return <div>Loding..</div>;
     }
+    const coin_details = coins[sym].details;
     return (
       <div className = 'shadow-sm'>
         <ul className = 'nav nav-tabs' role = 'tablist'>
@@ -68,7 +70,7 @@ class CoinInfoTabs extends Component {
 
 function mapStateToProps(state) {
   return {
-    coin_details: state.coin_details.data
+    coins: state.coins
   };
 }
 

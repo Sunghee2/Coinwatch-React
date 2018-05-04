@@ -3,6 +3,10 @@ import CoinList from '../components/coin_list';
 import Header from '../components/header_home';
 
 class CoinHome extends Component {
+  componentWillMount() {
+    document.title = 'Coin Watch';
+  }
+
   render() {
     return (
       <div className = 'CoinHome'>

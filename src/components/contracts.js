@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
+import { bindActionCreators } from 'redux';                               
 import { connect } from 'react-redux';
 
 import { fetchCoinTransaction } from '../actions';
@@ -35,10 +35,12 @@ class Contracts extends Component {
   }
 
   render() {
-    const transactions = this.props.coin_transaction['data'];
-    if (!transactions || transactions.length === 0) {
+    const coins = this.props.coins;
+    const sym = this.props.coin;
+    if (!coins || coins.length === 0 || !coins[sym].transaction || coins[sym].transaction.length === 0) {
       return <div>Loding..</div>;
     }
+    const transactions = coins[sym].transaction.data;
     return (
       <div className = 'table-responsive rounded shadow-sm mt-3'>
         <table className = 'table'>
@@ -61,7 +63,7 @@ class Contracts extends Component {
 
 function mapStateToProps(state) {
   return {
-    coin_transaction: state.coin_transaction.data,
+    coins : state.coins
   };
 }
 

@@ -37,7 +37,7 @@ class CoinList extends Component {
     const arr_coin = ['BTC','ETH','XRP','BCH','EOS','QTUM','DASH','BTG','ZEC','XMR','LTC','ETC'];
     var coin_list = this.props.coin_list;
     var num = 0;
-    if (!coin_list || coin_list.length == 0) {
+    if (!coin_list || coin_list.length === 0) {
       return <Loader type = 'pacman'/>; //안됨 다른 걸로 바꾸기
     }
     return (

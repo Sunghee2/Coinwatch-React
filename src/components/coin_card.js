@@ -30,10 +30,10 @@ class CoinCard extends Component {
     const coins = this.props.coins[sym];
 
     
-    if (!coins || coins.length == 0 || !coins.KRW || !coins.price_history) {
+    if (!coins || coins.length === 0 || !coins.KRW || !coins.price_history) {
       return <div/>; //안됨 다른 걸로 바꾸기
     }
-    console.log(coins);
+    // console.log(coins);
     
     const coin_list = this.props.coin_list[sym];
     
@@ -43,7 +43,7 @@ class CoinCard extends Component {
         <div className = 'card-body'>
           <div className = 'text-center'>
             <Link to = {{ pathname: `/${sym}`, state: { id: `${coin_list.Id}` }}}>
-              <img className = 'coin_list_img' src = {imgUrl}/>
+              <img className = 'coin_list_img' src = {imgUrl} alt = ''/>
               <h5 className = 'coin-name'>{coin_list.CoinName}</h5>
             </Link>
           </div>

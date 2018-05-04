@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchCoin, fetchCoinDetails } from '../actions';
+import { fetchCoin } from '../actions';
 import { bindActionCreators } from 'redux';
 
 import Header from '../components/header_show';
@@ -29,7 +29,7 @@ class CoinShow extends Component {
     if (!coins || !coins[coin.id] || coins[coin.id].length === 0) {
       return <div/>; //안됨 다른 걸로 바꾸기
     }
-    console.log(coins[coin.id]);
+    // console.log(coins[coin.id]);
     const id = this.props.location.state.id;
     return (
       <div className = 'CoinShow'>
@@ -45,7 +45,7 @@ class CoinShow extends Component {
               <Chart coin = {coin.id}/>
             </div>
             <div className = 'mt-3'>
-              <CoinInfoTabs id = {id}/>
+              <CoinInfoTabs id = {id} coin = {coin.id}/>
             </div>
           </div>
           <div className = 'col-4'>

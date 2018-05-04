@@ -64,11 +64,12 @@ class OrderBook extends Component {
   }
 
   render() {
-    const coin = this.props.coin;
-    const order_book = this.props.coin_order_book[coin];
-    if (!order_book || order_book.length === 0) {
+    const sym = this.props.coin;
+    const coins = this.props.coins;
+    if (!coins || coins.length === 0 || !coins[sym].order_book || coins[sym].order_book.length === 0) {
       return <div>Loding..</div>;
     }
+    const order_book = coins[sym].order_book;
     return (
       <div className = 'box_orderbook bg-white rounded shadow-sm'>
         <table className = 'orderbook table h-100'>
@@ -78,8 +79,8 @@ class OrderBook extends Component {
             </tr>
           </thead>
           <tbody className = 'h-100'>
-            {this.renderAsks(order_book['data'].asks, order_book['data'].timestamp)}
-            {this.renderBids(order_book['data'].bids, order_book['data'].timestamp)}
+            {this.renderAsks(order_book.asks, order_book.timestamp)}
+            {this.renderBids(order_book.bids, order_book.timestamp)}
           </tbody>
         </table>
       </div>
@@ -89,7 +90,7 @@ class OrderBook extends Component {
 
 function mapStateToProps(state) {
   return {
-    coin_order_book: state.coin_order_book.data,
+    coins: state.coins
   };
 }
 

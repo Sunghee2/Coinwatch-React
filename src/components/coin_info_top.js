@@ -8,7 +8,8 @@ class CoinInfoTop extends Component {
   componentDidMount() {
     setInterval(() => {
       this.props.fetchCoin(this.props.coin);
-    }, 1000);
+      document.title = this.numberWithCommas(this.props.coins[this.props.coin].KRW.PRICE) + "  " + this.props.coin;
+    }, 2000);
   }
 
   numberWithCommas(x) {
