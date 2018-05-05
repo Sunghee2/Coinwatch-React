@@ -1,8 +1,4 @@
----
-typora-root-url: screenshot
----
-
-# Coinwatch_web
+#Coinwatch_web
 
 ### [프로젝트 1] 암호화폐 시세 확인 프로그램 만들기
  - React 를 이용하여 암호화폐 시세를 확인하는 프로그램을 작성하시오.
@@ -31,13 +27,13 @@ typora-root-url: screenshot
 
 *coin_home*
 
-![coin_home_screen](/screen1.JPG)
+![coin_home_screen](C:\Users\630su\Documents\GitHub\Coinwatch_web\screenshot\screen1.JPG)
 
 
 
 *coin_show*
 
-![coin_show_screen](/screen2.JPG)
+![coin_show_screen](C:\Users\630su\Documents\GitHub\Coinwatch_web\screenshot\screen2.JPG)
 
 
 
@@ -225,3 +221,7 @@ home에 작은 차트 하나씩 그리고 싶었는데 api coin 하나씩 콜해
 > searchbar div들 끼리 겹침 -> width 설정
 >
 > typeahead 하다가 포기........자동완성...
+
+
+
+마지막으로 해야할 일 : README 비우기
