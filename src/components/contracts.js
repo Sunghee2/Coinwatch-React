@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';                               
 import { connect } from 'react-redux';
+import MDSpinner from 'react-md-spinner';
 
 import { fetchCoinTransaction } from '../actions';
 
@@ -38,7 +39,7 @@ class Contracts extends Component {
     const coins = this.props.coins;
     const sym = this.props.coin;
     if (!coins || coins.length === 0 || !coins[sym].transaction || coins[sym].transaction.length === 0) {
-      return <div>Loding..</div>;
+      return <MDSpinner size = {30}/>;
     }
     const transactions = coins[sym].transaction.data;
     return (

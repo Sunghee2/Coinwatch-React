@@ -126,7 +126,7 @@ div#myGrid {
   }
   
   .react-grid-item.react-grid-placeholder {
-    background: red;
+    background: rgb(67, 46, 161);
     opacity: 0.2;
     transition-duration: 100ms;
     z-index: 2;

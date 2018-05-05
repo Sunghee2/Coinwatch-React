@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import MDSpinner from 'react-md-spinner';
 
 import { fetchCoinOrderBook } from '../actions';
 
@@ -16,13 +17,20 @@ class OrderBook extends Component {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
-  renderAsks(asks, timestamp) {
+  sumQuantity(asks, bids) {
     var sum = 0;
-    for (var i of asks) {
-      sum += Number(i.price);
+    for(var i of asks) {
+      sum += Number(i.quantity);
     }
-    return _.orderBy(_.slice(asks, 0, 5), 'price', 'desc').map((v) => {
-      const width = (v.quantity/sum)*10000 > 100 ? '100%':(v.quantity/sum)*100 + '%'; 
+    for(var j of bids) {
+      sum += Number(j.quantity);
+    }
+    return sum;
+  }
+
+  renderAsks(asks, sum, timestamp) {
+    return _.orderBy(asks, 'price', 'desc').map((v) => {
+      const width = (v.quantity/sum)*100 > 100 ? '100%':(v.quantity/sum)*100 + '%'; 
       const marginLeft = width==='100%'? '0':100-((v.quantity/sum)*100) + "%";
       const key = timestamp + v.price;
       return (
@@ -40,13 +48,9 @@ class OrderBook extends Component {
     });
   }
 
-  renderBids(bids, timestamp) {
-    var sum = 0;
-    for (var i of bids) {
-      sum += Number(i.price);
-    }
-    return _.slice(bids, 0, 5).map((v) => {
-      var width = (v.quantity/sum)*10000 > 100? '100%':(v.quantity/sum)*100 + '%';
+  renderBids(bids, sum, timestamp) {
+    return bids.map((v) => {
+      var width = (v.quantity/sum)*100 > 100? '100%':(v.quantity/sum)*100 + '%';
       const key = timestamp + v.price;
       return (
         <tr key = {key} className = 'h-100'>
@@ -67,9 +71,15 @@ class OrderBook extends Component {
     const sym = this.props.coin;
     const coins = this.props.coins;
     if (!coins || coins.length === 0 || !coins[sym].order_book || coins[sym].order_book.length === 0) {
-      return <div>Loding..</div>;
+      return (
+        <MDSpinner className = 'mb-5' size = {30} />
+      );
     }
     const order_book = coins[sym].order_book;
+    const asks = _.slice(order_book.asks, 0, 5);
+    const bids = _.slice(order_book.bids, 0, 5);
+    const sum = this.sumQuantity(asks, bids);
+
     return (
       <div className = 'box_orderbook bg-white rounded shadow-sm'>
         <table className = 'orderbook table h-100'>
@@ -79,8 +89,8 @@ class OrderBook extends Component {
             </tr>
           </thead>
           <tbody className = 'h-100'>
-            {this.renderAsks(order_book.asks, order_book.timestamp)}
-            {this.renderBids(order_book.bids, order_book.timestamp)}
+            {this.renderAsks(asks, sum, order_book.timestamp)}
+            {this.renderBids(bids, sum, order_book.timestamp)}
           </tbody>
         </table>
       </div>

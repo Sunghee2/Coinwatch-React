@@ -3,10 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import RGL, { WidthProvider } from 'react-grid-layout';
-import Loader from 'react-loaders';
 
 import Card from './coin_card';
-import { fetchCoin, fetchCoinList, fetchCoinPriceHistory } from '../actions';
+import { fetchCoinList } from '../actions';
 
 const ReactGridLayout = WidthProvider(RGL);
 
@@ -38,7 +37,7 @@ class CoinList extends Component {
     var coin_list = this.props.coin_list;
     var num = 0;
     if (!coin_list || coin_list.length === 0) {
-      return <Loader type = 'pacman'/>; //안됨 다른 걸로 바꾸기
+      return <div/>;
     }
     return (
       <ReactGridLayout>
@@ -58,13 +57,11 @@ class CoinList extends Component {
 function mapStateToProps(state) {
   return {
     coin_list: state.coin_list.data,
-    coin_price_list: state.coin_price_list,
-    selected: state.selected
   };
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCoin, fetchCoinList, fetchCoinPriceHistory }, dispatch);
+  return bindActionCreators({ fetchCoinList }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinList);

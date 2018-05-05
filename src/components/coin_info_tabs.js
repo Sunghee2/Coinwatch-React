@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { fetchCoinDetails } from '../actions';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import MDSpinner from 'react-md-spinner';
 
 class CoinInfoTabs extends Component {
   componentDidMount() {
@@ -12,7 +13,7 @@ class CoinInfoTabs extends Component {
     const coins = this.props.coins;
     const sym = this.props.coin;
     if(!coins || coins.length === 0 || !coins[sym].details || coins[sym].details.length === 0) {
-      return <div>Loding..</div>;
+      return <MDSpinner className = 'mt-3' size = {40}/>;
     }
     const coin_details = coins[sym].details;
     return (

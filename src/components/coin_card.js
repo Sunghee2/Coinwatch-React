@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import MDSpinner from 'react-md-spinner';
 
 import Chart from './chart_in_coin_home';
 import { fetchCoin, fetchCoinPriceHistory } from '../actions';
@@ -14,7 +15,6 @@ class CoinCard extends Component {
       this.props.fetchCoin(this.props.coin);
       this.props.fetchCoinPriceHistory(this.props.coin);
     }, 3000);
-    // this.props.fetchCoin(this.props.coin);
   }
 
   numberWithCommas(x) {
@@ -31,9 +31,8 @@ class CoinCard extends Component {
 
     
     if (!coins || coins.length === 0 || !coins.KRW || !coins.price_history) {
-      return <div/>; //안됨 다른 걸로 바꾸기
+      return <MDSpinner size = {30}/>;
     }
-    // console.log(coins);
     
     const coin_list = this.props.coin_list[sym];
     
@@ -58,12 +57,9 @@ class CoinCard extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state.coins);
   return {
     coins: state.coins,
     coin_list: state.coin_list.data,
-    coin_price_list: state.coin_price_list,
-    selected: state.selected
   };
 }
 

@@ -1,4 +1,4 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import coins from './coin_reducer';
 import coin_list from './coin_list_reducer';
 

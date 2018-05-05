@@ -9,7 +9,6 @@ class CoinInfoTop extends Component {
   componentDidMount() {
     setInterval(() => {
       this.props.fetchCoin(this.props.coin);
-      // document.title = this.numberWithCommas(this.props.coins[this.props.coin].KRW.PRICE) + "  " + this.props.coin;
     }, 2000);
   }
 
@@ -54,7 +53,6 @@ class CoinInfoTop extends Component {
 }
 
 function mapStateToProps(state) {
-  // console.log(state.coins.data.coins['EOS'].KRW.VOLUME24HOUR);
   return {
     coins: state.coins,
   };

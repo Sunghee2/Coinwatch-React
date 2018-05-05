@@ -1,3 +1,7 @@
+---
+typora-root-url: screenshot
+---
+
 # Coinwatch_web
 
 ### [프로젝트 1] 암호화폐 시세 확인 프로그램 만들기
@@ -22,6 +26,18 @@
 > 참고: https://github.com/brillout/awesome-react-components
 
 
+
+#### 결과
+
+*coin_home*
+
+![coin_home_screen](/screen1.JPG)
+
+
+
+*coin_show*
+
+![coin_show_screen](/screen2.JPG)
 
 
 
@@ -50,9 +66,7 @@
 
 - 자꾸 전체 다 다시 리로드됨.. 가격만 바뀔때로
 
-  ​
-
-
+  
 
 ##### 18-04-24
 
@@ -96,9 +110,7 @@
 
 - 차트 종가로 라인 그리기
 
-  ​
-
-
+  
 
 ##### 18-04-26
 
@@ -114,9 +126,6 @@
 
 - [x] 탭 클릭
 
-  ​
-
-
 
 > 참고 : https://github.com/yahoo/react-stickynode
 >
@@ -126,21 +135,21 @@
 >
 > show페이지에 symbol, id 다 필요한데 이걸로 fetchCoinList 하기 그럼...
 
+
+
 해야할 것
 
 - 탭 로딩
 
 - css불편해서 sass..깔까 고민중...
 
-  ​
+  
 
 ##### 18-05-01
 
 home에 작은 차트 하나씩 그리고 싶었는데 api coin 하나씩 콜해야됨.... 
 
 - [x] %에 색 넣기
-
-
 
 
 > key, _grid가 undefined -> return을 안씀..
@@ -195,7 +204,24 @@ home에 작은 차트 하나씩 그리고 싶었는데 api coin 하나씩 콜해
 
 - [x] reducer 정리
 - [x] 탭 title 설정
+- [x] loding 추가
+- [x] 호가창 수량 뒤에 상자 고침 
+- [x] package 정리
 
 > 졸면서 과제했더니 전체적으로 이상해짐 무언가......다음부터그러지말아야지...
 >
 > title 주소바뀔 때 업데이트가 안됨 -> react-meta-tags 로 방법 바꿈
+
+
+
+##### 18-05-05
+
+
+
+> [eslint] 'Fragment' is not defined. (react/jsx-no-undef ) -> react에서 Fragment import
+>
+> 검색창 overflow x -> header가 fixed되어야됨...
+>
+> searchbar div들 끼리 겹침 -> width 설정
+>
+> typeahead 하다가 포기........자동완성...
