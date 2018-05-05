@@ -1,4 +1,4 @@
-#Coinwatch_web
+# Coinwatch_web
 
 ### [프로젝트 1] 암호화폐 시세 확인 프로그램 만들기
  - React 를 이용하여 암호화폐 시세를 확인하는 프로그램을 작성하시오.
@@ -27,13 +27,13 @@
 
 *coin_home*
 
-![coin_home_screen](C:\Users\630su\Documents\GitHub\Coinwatch_web\screenshot\screen1.JPG)
+![coin_home_screen](./screenshot/screen1.JPG)
 
 
 
 *coin_show*
 
-![coin_show_screen](C:\Users\630su\Documents\GitHub\Coinwatch_web\screenshot\screen2.JPG)
+![coin_show_screen](./screenshot/screen2.JPG)
 
 
 
