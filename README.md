@@ -37,6 +37,44 @@
 
 
 
+##### Folder Structure
+
+```
+Coinwatch_web/
+  ~
+  src/
+    actions/
+      index.js
+    components/
+      chart_in_coin_home.js
+      chart_in_coin_show.js
+      coin_card.js
+      coin_info_tabs.js
+      coin_info_top.js
+      coin_list.js
+      contracts.js
+      header_home.js
+      header_show.js
+      order_book.js
+    containers/
+      coin_home.js
+      coin_show.js
+    img/
+      sky.jpg
+    reducers/
+      coin_list_reducer.js
+      coin_reducer.js
+      index.js
+    App.css
+    App.js
+    index.css
+    index.js
+```
+
+
+
+
+
 ##### 18-04-20
 
 - [x] 이름 card-title 넣기
@@ -55,6 +93,8 @@
     }
 }
 ```
+
+나중에 와서 생각해보니 lodash였던듯...
 
 
 
