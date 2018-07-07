@@ -1,43 +1,34 @@
 # Coinwatch_web
 
-### [프로젝트 1] 암호화폐 시세 확인 프로그램 만들기
- - React 를 이용하여 암호화폐 시세를 확인하는 프로그램을 작성하시오.
- - https://www.cryptocompare.com/api/ 의 API를 참고하시오. (다른 가능한 api가 있다면 사용하여도 무방함)
+## Table of Contents
 
-##### 기본 구현 사항
- - 최소 다음과 같은 UI 를 가져야 함
-    - 코인 리스트 페이지: 주요한 Coin 들의 간단한 정보와 현재 가격이 리스트 되어야 함
-    - 코인 상세 페이지: 코인에 대한 상세 정보와 가격에 대한 상세 정보가 나타나야 함
- - React, Redux 등 수업시간에 배운 기술을 사용하여야 함
- - 본 과제는 개인 과제이며, 개인별로 발표자료를 준비하여 개발 내용을 발표하여야 한다. 별도의 보고서 대신 발표자료로 보고서를 대신하며, 과제 제출 후 전체 코드는 github에 공개하는 것을 필수 요건으로 한다.
+1. [개발 환경](#개발_환경)
+2. [Getting Started](#getting_started)
+3. [Folder Structure](#folder_structure)
+4. [Screenshots](#screenshots)
+   - [coin_home](#coin_home)
+   - [coin_show](#coin_show)
+5. [Todo](#todo)
 
-##### 과제 제출
- - 발표: 5월 8일 / 10일
- - 발표 자료 제출: Tahiti 사이트에 업로드 (5월 7일까지) - 파일 사이즈가 너무 클 경우 조교에게 이메일 제출
- - github 주소 공개: 5월 11일
-##### 평가 기준
- - 사이트 완성도 30점, 발표 30점, 보고서(발표 자료) 10점, 소스 코드 10점
- - 기본 구현 사항 외에 추가 구현 내용에 따라 추가 20점 부여 - 추가 내용은 보고서 및 발표에서 잘 제시하세요.
+## 개발 환경
 
-> 참고: https://github.com/brillout/awesome-react-components
+- React(v16.3.1) + Redux(v3.7.2)
+- node.js(v8.10.0), html, css, Bootstrap4
+- [cyptocompare api](https://www.cryptocompare.com/api/)
+- [bithumb api](https://www.bithumb.com/u1/US127)
 
+## Getting Started
 
+```
+$ npm install
+$ npm start
+```
 
-#### 결과
+**Note** -   If loading animation continues when you start this project, install this chrome extensions : https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?utm_source=chrome-ntp-icon
 
-*coin_home*
+and turn on *Enable cross-origin resource sharing* in the settings of this program. 
 
-![coin_home_screen](./screenshot/screen1.JPG)
-
-
-
-*coin_show*
-
-![coin_show_screen](./screenshot/screen2.JPG)
-
-
-
-##### Folder Structure
+## Folder Structure
 
 ```
 Coinwatch_web/
@@ -73,7 +64,23 @@ Coinwatch_web/
 
 
 
+## Screenshots
 
+#### *coin_home*
+
+![coin_home_screen](./screenshots/screen1.JPG)
+
+![coin_home_structure](./screenshots/coin_home.jpg)
+
+
+
+#### *coin_show*
+
+![coin_show_screen](./screenshots/screen2.JPG)
+
+![coin_show_structure](./screenshots/coin_show.jpg)
+
+## Todo
 
 ##### 18-04-20
 
@@ -251,8 +258,6 @@ home에 작은 차트 하나씩 그리고 싶었는데 api coin 하나씩 콜해
 
 
 ##### 18-05-05
-
-
 
 > [eslint] 'Fragment' is not defined. (react/jsx-no-undef ) -> react에서 Fragment import
 >
