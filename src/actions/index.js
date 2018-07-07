@@ -60,7 +60,7 @@ export function fetchCoinOrderBook(coin) {
 }
 
 export function fetchCoinTransaction(coin) {
-  const url = `https://api.bithumb.com/public/recent_transactions/${coin}`;
+  const url = `https://api.bithumb.com/public/transaction_history/${coin}`;
   const request = axios.get(url);
   return {
     type: FETCH_COIN_TRANSACTION,
