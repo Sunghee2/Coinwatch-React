@@ -2,9 +2,9 @@
 
 ## Table of Contents
 
-1. [개발 환경](#개발_환경)
-2. [Getting Started](#getting_started)
-3. [Folder Structure](#folder_structure)
+1. [개발 환경](#개발-환경)
+2. [Getting Started](#getting-started)
+3. [Folder Structure](#folder-structure)
 4. [Screenshots](#screenshots)
    - [coin_home](#coin_home)
    - [coin_show](#coin_show)
@@ -70,7 +70,7 @@ Coinwatch_web/
 
 ![coin_home_screen](./screenshots/screen1.JPG)
 
-![coin_home_structure](./screenshots/coin_home.jpg)
+![coin_home_structure](./screenshots/coin_home.JPG)
 
 
 
@@ -78,7 +78,7 @@ Coinwatch_web/
 
 ![coin_show_screen](./screenshots/screen2.JPG)
 
-![coin_show_structure](./screenshots/coin_show.jpg)
+![coin_show_structure](./screenshots/coin_show.JPG)
 
 ## Todo
 
