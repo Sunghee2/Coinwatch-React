@@ -1,16 +1,25 @@
-# Coinwatch_web
+# Coinwatch
+
+- 실시간 암호화폐 시세 확인 홈페이지 (거래소 Bithumb, 원화 기준)
+- real-time cryptocurrency ticker, order, contracts
 
 ## Table of Contents
 
-1. [개발 환경](#개발-환경)
-2. [Getting Started](#getting-started)
-3. [Folder Structure](#folder-structure)
-4. [Screenshots](#screenshots)
+1. [About](#about)
+2. [Development Environment](#development-environment)
+3. [Getting Started](#getting-started)
+4. [Folder Structure](#folder-structure)
+5. [Screenshots](#screenshots)
    - [coin_home](#coin_home)
    - [coin_show](#coin_show)
-5. [Todo](#todo)
+6. [Todo](#todo)
 
-## 개발 환경
+## About
+
+- 개발자 : 이성희
+- 개발 기간 : 2018년 4월 20일 ~ 2018년 5월 7일
+
+## Development Environment
 
 - React(v16.3.1) + Redux(v3.7.2)
 - node.js(v8.10.0), html, css, Bootstrap4
@@ -68,7 +77,7 @@ Coinwatch_web/
 
 #### *coin_home*
 
-![coin_home_screen](./screenshots/screen1.JPG)
+![coin_home_screen](https://screenshot-for-github.s3.ap-northeast-2.amazonaws.com/GIF3.gif)
 
 ```
 ┌--------------------------coin_home.js--------------------------┐
@@ -91,7 +100,7 @@ Coinwatch_web/
 
 #### *coin_show*
 
-![coin_show_screen](./screenshots/screen2.JPG)
+![coin_show_screen](https://screenshot-for-github.s3.ap-northeast-2.amazonaws.com/desc3.gif)
 
 ```
 ┌--------------------------coin_show.js--------------------------┐
@@ -114,6 +123,11 @@ Coinwatch_web/
 <br>
 
 ## Todo
+
+- bithumb ticker api에서 현재가를 제공하지 않음 -> 원래 cryptocompare api를 사용하였으나 업데이트 속도가 느렸음. —> 업데이트가 빠른 api, bithumb 가격을 제공하는 api를 찾아야할 듯
+- 코인 설명을 www.cryptocompare ~ 에서 가져오는데 allow-control-allow-origin 문제가 있음
+
+## Done
 
 ##### 18-04-20
 
@@ -162,7 +176,7 @@ Coinwatch_web/
 
 - [x] 배경이미지 바꿈
 
-  ​
+  
 
 > 참고 : https://github.com/rafaelklaessen/react-tradingview-widget
 
@@ -299,7 +313,3 @@ home에 작은 차트 하나씩 그리고 싶었는데 api coin 하나씩 콜해
 > searchbar div들 끼리 겹침 -> width 설정
 >
 > typeahead 하다가 포기........자동완성...
-
-
-
-마지막으로 해야할 일 : README 비우기
