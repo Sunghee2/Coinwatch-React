@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import MDSpinner from 'react-md-spinner';
 
 import Chart from './chart_in_coin_home';
-import { fetchCoin, fetchCoinPriceHistory } from '../actions';
+import { fetchCoin, fetchCoinPriceHistory, fetchCoinTransaction } from '../actions';
 
 const ImgUrl = 'https://www.cryptocompare.com';
 
@@ -14,7 +14,8 @@ class CoinCard extends Component {
     setInterval(() => {
       this.props.fetchCoin(this.props.coin);
       this.props.fetchCoinPriceHistory(this.props.coin);
-    }, 3000);
+      this.props.fetchCoinTransaction(this.props.coin);
+    }, 4000);
   }
 
   numberWithCommas(x) {
@@ -28,9 +29,8 @@ class CoinCard extends Component {
   render(){
     const sym = this.props.coin;
     const coins = this.props.coins[sym];
-
     
-    if (!coins || coins.length === 0 || !coins.KRW || !coins.price_history) {
+    if (!coins || coins.length === 0 || !coins.transaction || !coins.price_history) {
       return <MDSpinner size = {30}/>;
     }
     
@@ -46,7 +46,7 @@ class CoinCard extends Component {
               <h5 className = 'coin-name'>{coin_list.CoinName}</h5>
             </Link>
           </div>
-          <p className = 'coin-price font-weight-bold' key = {coins.KRW.PRICE}>₩ {this.numberWithCommas(coins.KRW.PRICE)} <span className = 'change24H ml-1 font-weight-bold' style = {{color: `${this.getColor(coins.KRW.CHANGEPCT24HOUR)}`}}>{Number(coins.KRW.CHANGEPCT24HOUR).toFixed(2)} %</span></p>
+          <p className = 'coin-price font-weight-bold' key = {coins.KRW.data.closing_price}>₩ {this.numberWithCommas(coins.KRW.data.closing_price)} <span className = 'change24H ml-1 font-weight-bold' style = {{color: `${this.getColor(coins.KRW.data['24H_fluctate_rate'])}`}}>{Number(coins.KRW.data['24H_fluctate_rate']).toFixed(2)} %</span></p>
           <div key = {coins.price_history[0].time} className = 'mx-auto'>
             <Chart key = {coins.price_history[0].time} data = {coins.price_history.map(e => (e.close))}/>
           </div>
@@ -64,7 +64,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchCoin, fetchCoinPriceHistory }, dispatch);
+  return bindActionCreators({ fetchCoin, fetchCoinPriceHistory, fetchCoinTransaction }, dispatch);
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CoinCard);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ROOT_URL_API = 'https://min-api.cryptocompare.com/data/pricemultifull';
+const ROOT_URL_API = 'https://api.bithumb.com/public/ticker';
 const BASE_URL_API = 'https://www.cryptocompare.com/api/data/coinsnapshotfullbyid';
 
 export const FETCH_COIN_LIST = 'FETCH_COIN_LIST';
@@ -20,7 +20,7 @@ export function fetchCoinList() {
 }
 
 export function fetchCoin(coin) {
-  const url = `${ROOT_URL_API}?fsyms=${coin}&tsyms=KRW&e=Bithumb`;
+  const url = `${ROOT_URL_API}/${coin}`;
   const request = axios.get(url);
   return {
     type: FETCH_COIN,
