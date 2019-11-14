@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import CoinList from '../components/coin_list';
-import Header from '../components/header_home';
+import CoinList from '../components/List';
+import Header from '../components/HomeHeader';
 
-class CoinHome extends Component {
+class HomePage extends Component {
   render() {
     document.title = 'Coin Watch';
     return (
@@ -18,4 +18,4 @@ class CoinHome extends Component {
   }
 }
 
-export default CoinHome;
+export default HomePage;

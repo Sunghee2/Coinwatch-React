@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import MDSpinner from 'react-md-spinner';
 
-import Chart from './chart_in_coin_home';
+import Chart from './HomeChart';
 import { fetchCoin, fetchCoinPriceHistory, fetchCoinTransaction } from '../actions';
 
 const ImgUrl = 'https://www.cryptocompare.com';

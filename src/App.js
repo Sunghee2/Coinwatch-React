@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import CoinHome from './containers/coin_home';
-import CoinShow from './containers/coin_show';
+import HomePage from './pages/HomePage';
+import DetailPage from './pages/DetailPage';
 import './App.css';
 
 class App extends Component {
@@ -10,8 +10,8 @@ class App extends Component {
     return (
       <div className = 'App'>
         <Switch>
-          <Route exact path = '/' component = {CoinHome}/>
-          <Route path = '/:id' component = {CoinShow}/>
+          <Route exact path = '/' component = {HomePage}/>
+          <Route path = '/:id' component = {DetailPage}/>
         </Switch>
       </div>
     );

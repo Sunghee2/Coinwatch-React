@@ -23,6 +23,7 @@ class CoinInfoTop extends Component {
   render() {
     const coin_price = this.props.coins[this.props.coin].KRW.data;
     const color = this.getColor(coin_price['24H_fluctate_rate']);
+    console.log(this.props.coins)
 
     return (
       <div>

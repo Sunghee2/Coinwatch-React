@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import RGL, { WidthProvider } from 'react-grid-layout';
 
-import Card from './coin_card';
+import Card from './Card';
 import { fetchCoinList } from '../actions';
 
 const ReactGridLayout = WidthProvider(RGL);

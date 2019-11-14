@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { fetchCoin } from '../actions';
 import { bindActionCreators } from 'redux';
 
-import Header from '../components/header_show';
-import CoinInfoTop from '../components/coin_info_top';
-import Chart from '../components/chart_in_coin_show';
-import CoinInfoTabs from '../components/coin_info_tabs';
-import OrderBook from '../components/order_book';
-import Contracts from '../components/contracts';
+import Header from '../components/ShowHeader';
+import CoinInfoTop from '../components/InfoTop';
+import Chart from '../components/ShowChart';
+import CoinInfoTabs from '../components/InfoTab';
+import OrderBook from '../components/OrderBook';
+import Contracts from '../components/Contracts';
 
-class CoinShow extends Component {
+class DetailPage extends Component {
   componentDidMount() {
     this.props.fetchCoin(this.props.match.params.id);
   }
@@ -67,4 +67,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ fetchCoin }, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CoinShow);
+export default connect(mapStateToProps, mapDispatchToProps)(DetailPage);

@@ -1,4 +1,4 @@
-import {FETCH_COIN_LIST} from '../actions';
+import {FETCH_COIN_LIST} from '../actions/actionTypes';
 
 export default function(state={
   loading: false, error: '', data: []

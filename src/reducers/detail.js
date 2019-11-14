@@ -4,7 +4,7 @@ import {
   FETCH_COIN_TRANSACTION,
   FETCH_COIN_DETAILS,
   FETCH_COIN_ORDER_BOOK
-} from '../actions';
+} from '../actions/actionTypes';
 
 export default function(state={}, action) {
   switch (action.type) {
