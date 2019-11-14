@@ -1,14 +1,15 @@
 import axios from 'axios';
+import {
+  FETCH_COIN_LIST,
+  FETCH_COIN,
+  FETCH_COIN_DETAILS,
+  FETCH_COIN_PRICE_HISTORY,
+  FETCH_COIN_ORDER_BOOK,
+  FETCH_COIN_TRANSACTION
+} from './actionTypes'
 
 const ROOT_URL_API = 'https://api.bithumb.com/public/ticker';
 const BASE_URL_API = 'https://www.cryptocompare.com/api/data/coinsnapshotfullbyid';
-
-export const FETCH_COIN_LIST = 'FETCH_COIN_LIST';
-export const FETCH_COIN = 'FETCH_COIN';
-export const FETCH_COIN_DETAILS = 'FETCH_COIN_DETAILS';
-export const FETCH_COIN_PRICE_HISTORY = 'FETCH_COIN_PRICE_HISTORY';
-export const FETCH_COIN_ORDER_BOOK = 'FETCH_COIN_ORDER_BOOK';
-export const FETCH_COIN_TRANSACTION = 'FETCH_COIN_TRANSACTION';
 
 export function fetchCoinList() {
   const url = 'https://min-api.cryptocompare.com/data/all/coinlist';
